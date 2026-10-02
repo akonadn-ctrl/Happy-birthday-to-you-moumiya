@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Happy Birthday, Soumia ❤️</title>
+
+<style>
+*{box-sizing:border-box}
+
+html,body{
+    margin:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+    background:#05000d;
+    color:white;
+}
+
+body{
+    perspective:1200px;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+#background{
+    position:fixed;
+    inset:0;
+    background:
+      radial-gradient(circle at center,#351052,#12051f 50%,#020006);
+    overflow:hidden;
+}
+
+.star{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:white;
+    border-radius:50%;
+    box-shadow:0 0 12px white;
+    animation:star 2s infinite alternate;
+}
+
+@keyframes star{
+    from{opacity:.2;transform:scale(.5)}
+    to{opacity:1;transform:scale(1.5)}
+}
+
+/* =========================
+   START
+========================= */
+
+#startScreen{
+    position:fixed;
+    inset:0;
+    z-index:50;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:
+      radial-gradient(circle,#351052,#09000f);
+    transition:1.5s;
+}
+
+.startTitle{
+    font-size:clamp(25px,7vw,55px);
+    margin-bottom:40px;
+    text-shadow:
+      0 0 10px white,
+      0 0 25px #ff4fa3,
+      0 0 50px #a82cff;
+}
+
+.buttonBox{
+    position:relative;
+    padding:45px;
+    animation:buttonFloat 3s infinite ease-in-out;
+}
+
+@keyframes buttonFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-15px)}
+}
+
+.startButton{
+    border:0;
+    padding:22px 40px;
+    border-radius:60px;
+    color:white;
+    font-size:23px;
+    font-weight:bold;
+    cursor:pointer;
+    background:linear-gradient(145deg,#ff3f96,#8e22dc);
+    box-shadow:
+      0 10px 0 #541078,
+      0 20px 40px #000,
+      0 0 35px #ff3f96;
+}
+
+.flower{
+    position:absolute;
+    font-size:35px;
+}
+
+.f1{top:0;left:50%}
+.f2{top:15%;right:0}
+.f3{top:50%;right:-15px}
+.f4{bottom:10%;right:0}
+.f5{bottom:0;left:50%}
+.f6{bottom:10%;left:0}
+.f7{top:50%;left:-15px}
+.f8{top:15%;left:0}
+
+/* =========================
+   CINEMA COUNTDOWN
+========================= */
+
+#countdown{
+    position:fixed;
+    inset:0;
+    z-index:40;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    background:#777;
+    overflow:hidden;
+}
+
+#countdown::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,.04) 0px,
+        rgba(0,0,0,.08) 2px,
+        transparent 4px
+      );
+    pointer-events:none;
+}
+
+.film{
+    position:absolute;
+    left:0;
+    right:0;
+    height:70px;
+    background:#111;
+}
+
+.film.top{top:0}
+.film.bottom{bottom:0}
+
+.hole{
+    position:absolute;
+    width:30px;
+    height:42px;
+    background:#777;
+    border-radius:4px;
+    top:14px;
+}
+
+.top .hole:nth-child(1){left:5%}
+.top .hole:nth-child(2){left:25%}
+.top .hole:nth-child(3){left:45%}
+.top .hole:nth-child(4){left:65%}
+.top .hole:nth-child(5){left:85%}
+
+.bottom .hole:nth-child(1){left:5%}
+.bottom .hole:nth-child(2){left:25%}
+.bottom .hole:nth-child(3){left:45%}
+.bottom .hole:nth-child(4){left:65%}
+.bottom .hole:nth-child(5){left:85%}
+
+.countNumber{
+    font-size:clamp(150px,35vw,320px);
+    font-weight:900;
+    color:#111;
+    text-shadow:
+      4px 4px 0 #eee,
+      -2px -2px 0 #eee;
+    opacity:0;
+}
+
+.countNumber.show{
+    animation:countShow 1s forwards;
+}
+
+@keyframes countShow{
+    0%{
+        opacity:0;
+        transform:scale(1.4);
+    }
+    20%{opacity:1}
+    80%{opacity:1}
+    100%{
+        opacity:0;
+        transform:scale(.7);
+    }
+}
+
+/* =========================
+   PARTY STAGE
+========================= */
+
+#party{
+    position:fixed;
+    inset:0;
+    z-index:10;
+    display:none;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at center,#4c126b,#150521 55%,#030007);
+}
+
+/* Lights */
+
+.light{
+    position:absolute;
+    bottom:-100px;
+    width:150px;
+    height:600px;
+    opacity:.5;
+    filter:blur(5px);
+    transform-origin:bottom;
+}
+
+.light.left{
+    left:5%;
+    background:linear-gradient(
+      to top,
+      #ff2d9b,
+      transparent
+    );
+    transform:rotate(25deg);
+}
+
+.light.right{
+    right:5%;
+    background:linear-gradient(
+      to top,
+      #793cff,
+      transparent
+    );
+    transform:rotate(-25deg);
+}
+
+/* Explosion */
+
+.explosion{
+    position:absolute;
+    bottom:-80px;
+    left:50%;
+    width:50px;
+    height:50px;
+    transform:translateX(-50%);
+}
+
+.spark{
+    position:absolute;
+    left:50%;
+    bottom:0;
+    width:5px;
+    height:100px;
+    border-radius:50%;
+    background:#fff;
+    box-shadow:
+      0 0 15px #fff,
+      0 0 30px #ff4da6;
+    transform-origin:bottom;
+    animation:explode 2s infinite ease-out;
+}
+
+@keyframes explode{
+    0%{
+        transform:rotate(var(--r)) scaleY(.1);
+        opacity:1;
+    }
+    100%{
+        transform:
+          rotate(var(--r))
+          translateY(-450px)
+          scaleY(1);
+        opacity:0;
+    }
+}
+
+/* =========================
+   HEART
+========================= */
+
+#heartBox{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.heart{
+    position:relative;
+    width:min(65vw,400px);
+    height:min(65vw,400px);
+    transform:rotate(-45deg);
+    filter:
+      drop-shadow(0 0 20px #ff2d8e)
+      drop-shadow(0 0 50px #ff2d8e);
+    animation:heartAppear 3s ease forwards,
+              heartPulse 2s 3s infinite;
+}
+
+.heart::before,
+.heart::after{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    background:#ff216f;
+}
+
+.heart::before{
+    top:-50%;
+}
+
+.heart::after{
+    left:50%;
+}
+
+.heartCore{
+    position:absolute;
+    inset:15%;
+    z-index:3;
+    transform:rotate(45deg);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-size:clamp(25px,6vw,45px);
+    font-weight:bold;
+    text-shadow:0 0 20px white;
+}
+
+@keyframes heartAppear{
+    0%{
+        transform:
+          rotate(-45deg)
+          scale(0)
+          translateZ(-500px);
+        opacity:0;
+    }
+    100%{
+        transform:
+          rotate(-45deg)
+          scale(1)
+          translateZ(100px);
+        opacity:1;
+    }
+}
+
+@keyframes heartPulse{
+    0%,100%{scale:1}
+    50%{scale:1.08}
+}
+
+/* =========================
+   SIDE HEARTS
+========================= */
+
+.sideHeart{
+    position:absolute;
+    width:130px;
+    height:110px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-size:17px;
+    font-weight:bold;
+    color:white;
+    text-shadow:0 0 10px white;
+    background:#ff195f;
+    transform:rotate(-45deg);
+    box-shadow:
+      0 0 20px #ff195f,
+      0 0 45px #ff195f;
+    animation:sideFloat 3s infinite ease-in-out;
+}
+
+.sideHeart::before,
+.sideHeart::after{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    background:#ff195f;
+    z-index:-1;
+}
+
+.sideHeart::before{top:-50%}
+.sideHeart::after{left:50%}
+
+.sideHeart span{
+    transform:rotate(45deg);
+    z-index:3;
+}
+
+.left1{left:4%;top:20%}
+.left2{left:2%;bottom:20%}
+.right1{right:4%;top:20%}
+.right2{right:2%;bottom:20%}
+
+@keyframes sideFloat{
+    0%,100%{translate:0 0}
+    50%{translate:0 -20px}
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+#message{
+    position:absolute;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    text-align:center;
+    padding:25px;
+    background:
+      radial-gradient(circle,#3d0d55,#09000e);
+}
+
+.messageBox{
+    max-width:750px;
+    padding:35px;
+    border-radius:30px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.2);
+    box-shadow:
+      0 20px 60px #000,
+      0 0 40px #ff3292;
+    transform:translateZ(100px);
+}
+
+.messageBox h2{
+    font-size:clamp(28px,7vw,55px);
+    margin:10px;
+    color:#ff70b6;
+    text-shadow:0 0 25px #ff3292;
+}
+
+.messageBox p{
+    font-size:clamp(18px,4vw,28px);
+    line-height:1.7;
+}
+
+/* =========================
+   I LOVE YOU
+========================= */
+
+#love{
+    position:fixed;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6%;
+    background:
+      radial-gradient(circle,#430b59,#08000e);
+}
+
+.loveText{
+    font-size:clamp(28px,7vw,70px);
+    font-weight:bold;
+    color:#ff4da2;
+    text-shadow:
+      5px 8px 0 #73104d,
+      0 0 20px #ff4da2,
+      0 0 50px #ff4da2;
+    animation:love3d 3s infinite ease-in-out;
+}
+
+@keyframes love3d{
+    0%,100%{
+        transform:translateZ(0) rotateY(20deg);
+    }
+    50%{
+        transform:translateZ(150px) rotateY(-20deg) scale(1.1);
+    }
+}
+
+/* =========================
+   FINAL
+========================= */
+
+#final{
+    position:fixed;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    text-align:center;
+    background:
+      radial-gradient(circle,#4b0b5e,#09000f);
+}
+
+#final h1{
+    font-size:clamp(32px,8vw,75px);
+    text-shadow:
+      0 0 15px white,
+      0 0 30px #ff4fa3,
+      0 0 60px #9b32ff;
+    animation:finalGlow 2s infinite alternate;
+}
+
+#final p{
+    font-size:clamp(22px,5vw,38px);
+}
+
+@keyframes finalGlow{
+    from{scale:1}
+    to{scale:1.07}
+}
+
+/* =========================
+   CONFETTI
+========================= */
+
+.confetti{
+    position:absolute;
+    font-size:25px;
+    animation:confetti 4s linear forwards;
+}
+
+@keyframes confetti{
+    from{
+        transform:translate(0,0) rotate(0);
+        opacity:1;
+    }
+    to{
+        transform:
+          translate(var(--x),var(--y))
+          rotate(720deg);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="background"></div>
+
+<!-- ================= START ================= -->
+
+<div id="startScreen">
+
+    <div class="startTitle">
+        A Special Birthday Surprise ❤️
+    </div>
+
+    <div class="buttonBox">
+
+        <span class="flower f1">🌹</span>
+        <span class="flower f2">🌸</span>
+        <span class="flower f3">❤️</span>
+        <span class="flower f4">🌺</span>
+        <span class="flower f5">💐</span>
+        <span class="flower f6">🌷</span>
+        <span class="flower f7">💖</span>
+        <span class="flower f8">🌹</span>
+
+        <button class="startButton" onclick="start()">
+            اضغطي هنا ❤️
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= COUNTDOWN ================= -->
+
+<div id="countdown">
+
+    <div class="film top">
+        <span class="hole"></span>
+        <span class="hole"></span>
+        <span class="hole"></span>
+        <span class="hole"></span>
+        <span class="hole"></span>
+    </div>
+
+    <div id="number" class="countNumber"></div>
+
+    <div class="film bottom">
+        <span class="hole"></span>
+        <span class="hole"></span>
+        <span class="hole"></span>
+        <span class="hole"></span>
+        <span class="hole"></span>
+    </div>
+
+</div>
+
+
+<!-- ================= PARTY ================= -->
+
+<div id="party">
+
+    <div class="light left"></div>
+    <div class="light right"></div>
+
+    <div class="explosion" id="explosion"></div>
+
+    <div class="sideHeart left1">
+        <span>YOU A LOVE ❤️</span>
+    </div>
+
+    <div class="sideHeart left2">
+        <span>YOU A LOVE ❤️</span>
+    </div>
+
+    <div class="sideHeart right1">
+        <span>YOU A LOVE ❤️</span>
+    </div>
+
+    <div class="sideHeart right2">
+        <span>YOU A LOVE ❤️</span>
+    </div>
+
+    <div id="heartBox">
+
+        <div class="heart">
+
+            <div class="heartCore">
+                Soumia ❤️
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= MESSAGE ================= -->
+
+<div id="message">
+
+    <div class="messageBox">
+
+        <h2>For You, Soumia ❤️</h2>
+
+        <p>
+            May your birthday be filled with happiness,
+            beautiful moments, endless smiles and lots of love. ❤️
+        </p>
+
+        <div style="font-size:45px">
+            🌹 💐 🌸 ✨ 🎂 ✨ 🌸 💐 🌹
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= LOVE ================= -->
+
+<div id="love">
+
+    <div class="loveText">
+        I LOVE ❤️
+    </div>
+
+    <div class="loveText">
+        YOU ❤️
+    </div>
+
+</div>
+
+
+<!-- ================= FINAL ================= -->
+
+<div id="final">
+
+    <h1>
+        Happy Birthday, Soumia ❤️
+    </h1>
+
+    <p>
+        15 October 2010 🎂
+    </p>
+
+    <div style="font-size:55px">
+        🌹💐🌸❤️🎂❤️🌸💐🌹
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   STARS
+========================= */
+
+const background=document.getElementById("background");
+
+for(let i=0;i<100;i++){
+
+    const s=document.createElement("div");
+
+    s.className="star";
+
+    s.style.left=Math.random()*100+"%";
+    s.style.top=Math.random()*100+"%";
+
+    s.style.animationDelay=Math.random()*3+"s";
+
+    background.appendChild(s);
+}
+
+
+/* =========================
+   EXPLOSION
+========================= */
+
+const explosion=document.getElementById("explosion");
+
+for(let i=0;i<35;i++){
+
+    const spark=document.createElement("div");
+
+    spark.className="spark";
+
+    spark.style.setProperty(
+        "--r",
+        (i*10+Math.random()*10)+"deg"
+    );
+
+    spark.style.animationDelay=
+        Math.random()*1.5+"s";
+
+    explosion.appendChild(spark);
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+function confetti(){
+
+    const items=[
+        "❤️","💖","🌹","🌸",
+        "✨","🎉","🎊","💐"
+    ];
+
+    for(let i=0;i<70;i++){
+
+        const c=document.createElement("div");
+
+        c.className="confetti";
+
+        c.textContent=
+            items[Math.floor(Math.random()*items.length)];
+
+        c.style.left="50%";
+        c.style.top="50%";
+
+        c.style.setProperty(
+            "--x",
+            ((Math.random()-.5)*window.innerWidth*2)+"px"
+        );
+
+        c.style.setProperty(
+            "--y",
+            ((Math.random()-.5)*window.innerHeight*2)+"px"
+        );
+
+        document.body.appendChild(c);
+
+        setTimeout(()=>c.remove(),4500);
+    }
+}
+
+
+/* =========================
+   MUSIC
+   توليد لحن بسيط بالمتصفح
+========================= */
+
+let audioContext;
+
+function birthdayMusic(){
+
+    audioContext =
+        new (window.AudioContext ||
+        window.webkitAudioContext)();
+
+    const notes=[
+        261.63,261.63,293.66,261.63,
+        349.23,329.63,
+        261.63,261.63,293.66,
+        261.63,392.00,349.23
+    ];
+
+    let time=audioContext.currentTime;
+
+    notes.forEach((frequency,i)=>{
+
+        const osc=audioContext.createOscillator();
+        const gain=audioContext.createGain();
+
+        osc.type="sine";
+        osc.frequency.value=frequency;
+
+        gain.gain.setValueAtTime(.0001,time);
+        gain.gain.exponentialRampToValueAtTime(
+            .12,time+.03
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            .0001,time+.55
+        );
+
+        osc.connect(gain);
+        gain.connect(audioContext.destination);
+
+        osc.start(time);
+        osc.stop(time+.6);
+
+        time+=.62;
+    });
+
+    /* إعادة اللحن */
+    setTimeout(()=>{
+        if(audioContext){
+            birthdayMusic();
+        }
+    },7500);
+}
+
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+function countdown(){
+
+    const screen=
+        document.getElementById("countdown");
+
+    const number=
+        document.getElementById("number");
+
+    screen.style.display="flex";
+
+    const numbers=["3","2","1"];
+
+    numbers.forEach((n,i)=>{
+
+        setTimeout(()=>{
+
+            number.classList.remove("show");
+
+            void number.offsetWidth;
+
+            number.textContent=n;
+
+            number.classList.add("show");
+
+        },i*1000);
+
+    });
+
+    setTimeout(()=>{
+
+        screen.style.display="none";
+
+        showParty();
+
+    },3000);
+}
+
+
+/* =========================
+   PARTY
+========================= */
+
+function showParty(){
+
+    document.getElementById("party").style.display="block";
+
+    confetti();
+
+    /*
+       القلب يظهر لمدة 10 ثواني
+    */
+
+    setTimeout(()=>{
+
+        document.getElementById("party").style.display="none";
+
+        showMessage();
+
+    },10000);
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+function showMessage(){
+
+    document.getElementById("message").style.display="flex";
+
+    /*
+       الرسالة 15 ثانية
+    */
+
+    setTimeout(()=>{
+
+        document.getElementById("message").style.display="none";
+
+        showLove();
+
+    },15000);
+}
+
+
+/* =========================
+   LOVE
+========================= */
+
+function showLove(){
+
+    document.getElementById("love").style.display="flex";
+
+    /*
+       I LOVE YOU لمدة 20 ثانية
+    */
+
+    setTimeout(()=>{
+
+        document.getElementById("love").style.display="none";
+
+        showFinal();
+
+    },20000);
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+function showFinal(){
+
+    document.getElementById("final").style.display="flex";
+
+    confetti();
+}
+
+
+/* =========================
+   START
+========================= */
+
+function start(){
+
+    /*
+       الموسيقى تبدأ بعد الضغط
+    */
+
+    birthdayMusic();
+
+    /*
+       إخفاء شاشة البداية
+    */
+
+    document.getElementById("startScreen").style.opacity="0";
+
+    setTimeout(()=>{
+
+        document.getElementById("startScreen").style.display="none";
+
+        countdown();
+
+    },1200);
+}
+
+</script>
+
+</body>
+  </html>
